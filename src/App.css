@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.form--user {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.form--user .form {
+  display: flex;
+  gap: 10px;
+}
+
+.user--outer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  margin-top: 20px;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-table td,
+.user-table th {
+  padding: 10px;
+  text-align: left;
+}
+
+.user-table tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.user-table th {
+  border-bottom: 2px solid #ddd;
+}
+
+.user-table td:first-child,
+.user-table th:first-child {
+  border-left: none;
+}
+
+.user-table td:last-child,
+.user-table th:last-child {
+  border-right: none;
+}
+
+
+/* task to do list  */
+
+
+.form--task {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.form--task .form {
+  display: flex;
+  gap: 10px;
+}
+
+.task--outer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  margin-top: 20px;
+}
+
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.task-table td,
+.task-table th {
+  padding: 10px;
+  text-align: left;
+}
+
+.task-table tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.task-table th {
+  border-bottom: 2px solid #ddd;
+}
+
+.task-table td:first-child,
+.task-table th:first-child {
+  border-left: none;
+}
+
+.task-table td:last-child,
+.task-table th:last-child {
+  border-right: none;
+}
+
+.task-table tbody tr button {
+  border: none;
+  background: none;
+}

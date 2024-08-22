@@ -1,0 +1,73 @@
+export const task = [
+    {
+      id: 1,
+      title: "Complete React project",
+      description: "Finish implementing the product page and integrate it with the backend.",
+      dueDate: "2024-08-25",
+      completed: false,
+    },
+    {
+      id: 2,
+      title: "Update Resume",
+      description: "Add recent projects and format the resume according to the latest template.",
+      dueDate: "2024-08-22",
+      completed: true,
+    },
+    {
+      id: 3,
+      title: "Grocery Shopping",
+      description: "Buy vegetables, fruits, and snacks for the week.",
+      dueDate: "2024-08-21",
+      completed: false,
+    },
+    {
+      id: 4,
+      title: "Study for Algorithms Exam",
+      description: "Revise sorting algorithms and practice coding problems.",
+      dueDate: "2024-08-24",
+      completed: false,
+    },
+    {
+      id: 5,
+      title: "Plan Weekend Getaway",
+      description: "Research places to visit and book accommodations.",
+      dueDate: "2024-08-23",
+      completed: true,
+    },
+    {
+      id: 6,
+      title: "Organize Workspace",
+      description: "Clean the desk and organize files and books.",
+      dueDate: "2024-08-20",
+      completed: false,
+    },
+    {
+      id: 7,
+      title: "Watch JavaScript Tutorial",
+      description: "Watch and practice exercises from the latest JavaScript course.",
+      dueDate: "2024-08-19",
+      completed: true,
+    },
+    {
+      id: 8,
+      title: "Exercise Routine",
+      description: "Go for a 30-minute run and do a quick home workout.",
+      dueDate: "2024-08-21",
+      completed: false,
+    },
+    {
+      id: 9,
+      title: "Write Blog Post",
+      description: "Draft a new blog post on 'The Importance of Clean Code'.",
+      dueDate: "2024-08-26",
+      completed: false,
+    },
+    {
+      id: 10,
+      title: "Read Book",
+      description: "Finish reading the current chapter of 'Clean Architecture'.",
+      dueDate: "2024-08-22",
+      completed: true,
+    },
+  ];
+  
