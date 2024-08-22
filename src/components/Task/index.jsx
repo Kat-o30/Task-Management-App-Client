@@ -4,14 +4,16 @@ import { TbTrashFilled } from "react-icons/tb";
 import styled from "styled-components";
 import { PiPencilSimpleLineFill } from "react-icons/pi";
 
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+
 const StyledTrashIcon = styled(TbTrashFilled)`
-  color: ${({ clicked, hovered }) => 
+  color: ${({ clicked, hovered }) =>
     clicked ? 'rgb(43, 154, 154)' : hovered ? 'rgb(29, 173, 173)' : 'rgb(55, 202, 202)'};
   font-size: 24px;
 `;
 
 const StyledPencilIcon = styled(PiPencilSimpleLineFill)`
-  color: ${({ clicked, hovered }) => 
+  color: ${({ clicked, hovered }) =>
     clicked ? 'rgb(43, 154, 154)' : hovered ? 'rgb(29, 173, 173)' : 'rgb(55, 202, 202)'};
   font-size: 24px;
 `;
@@ -77,7 +79,8 @@ const User = () => {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/tasks'); 
+ 
+      const response = await axios.get(`${apiBaseUrl}/api/tasks`);
       setTasks(response.data);
     } catch (error) {
       console.error('Error fetching tasks', error);
@@ -95,7 +98,7 @@ const User = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/tasks', taskData);
+      const response = await axios.get(`${apiBaseUrl}/api/tasks`);
       console.log('Task created:', response.data);
       setTasks([...tasks, response.data.task]);
       setTaskData({ title: '', description: '', dueDate: '', completed: false });
@@ -107,36 +110,36 @@ const User = () => {
   return (
     <div className='form--task'>
       <form className='form' onSubmit={handleSubmit}>
-        <input 
-          type="text" 
-          name="title" 
-          placeholder="Title" 
-          value={taskData.title} 
-          onChange={handleChange} 
-          required 
+        <input
+          type="text"
+          name="title"
+          placeholder="Title"
+          value={taskData.title}
+          onChange={handleChange}
+          required
         />
-        <input 
-          type="text" 
-          name="description" 
-          placeholder="Description" 
-          value={taskData.description} 
-          onChange={handleChange} 
-          required 
+        <input
+          type="text"
+          name="description"
+          placeholder="Description"
+          value={taskData.description}
+          onChange={handleChange}
+          required
         />
-        <input 
-          type="date" 
-          name="dueDate" 
-          placeholder="Due Date" 
-          value={taskData.dueDate} 
-          onChange={handleChange} 
-          required 
+        <input
+          type="date"
+          name="dueDate"
+          placeholder="Due Date"
+          value={taskData.dueDate}
+          onChange={handleChange}
+          required
         />
         <label>
-          <input 
-            type="checkbox" 
-            name="completed" 
-            checked={taskData.completed} 
-            onChange={handleChange} 
+          <input
+            type="checkbox"
+            name="completed"
+            checked={taskData.completed}
+            onChange={handleChange}
           /> Completed
         </label>
         <button type="submit">Submit</button>
@@ -161,15 +164,15 @@ const User = () => {
                 <td>{task.completed ? 'Yes' : 'No'}</td>
                 <td>
                   <button onClick={() => handleTrashClick(task._id)}>
-                    <StyledTrashIcon 
-                      clicked={clickedTrash[task._id]} 
-                      hovered={hoveredTrash[task._id]} 
+                    <StyledTrashIcon
+                      clicked={clickedTrash[task._id]}
+                      hovered={hoveredTrash[task._id]}
                     />
                   </button>
                   <button onClick={() => handlePencilClick(task._id)}>
-                    <StyledPencilIcon 
-                      clicked={clickedPencil[task._id]} 
-                      hovered={hoveredPencil[task._id]} 
+                    <StyledPencilIcon
+                      clicked={clickedPencil[task._id]}
+                      hovered={hoveredPencil[task._id]}
                     />
                   </button>
                 </td>
