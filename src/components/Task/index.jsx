@@ -98,7 +98,7 @@ const User = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`${apiBaseUrl}/api/tasks`);
+      const response = await axios.post(`${apiBaseUrl}/api/tasks`, taskData);
       console.log('Task created:', response.data);
       setTasks([...tasks, response.data.task]);
       setTaskData({ title: '', description: '', dueDate: '', completed: false });
@@ -106,6 +106,7 @@ const User = () => {
       console.error('Error creating task', error);
     }
   };
+  
 
   return (
     <div className='form--task'>
