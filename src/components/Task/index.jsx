@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { TbTrashFilled } from "react-icons/tb";
 import styled from "styled-components";
@@ -20,16 +20,13 @@ const StyledPencilIcon = styled(PiPencilSimpleLineFill)`
 
 const User = () => {
   const [clickedTrash, setClickedTrash] = useState({});
-  const [hoveredTrash, setHoveredTrash] = useState({});
   const [clickedPencil, setClickedPencil] = useState({});
-  const [hoveredPencil, setHoveredPencil] = useState({});
   const [taskData, setTaskData] = useState({
     title: '',
     description: '',
     dueDate: '',
     completed: false,
   });
-  const [tasks, setTasks] = useState([]);
 
   const handleTrashClick = (id) => {
     setClickedTrash((prev) => ({
@@ -45,48 +42,6 @@ const User = () => {
     }));
   };
 
-  const handleTrashMouseEnter = (id) => {
-    setHoveredTrash((prev) => ({
-      ...prev,
-      [id]: true,
-    }));
-  };
-
-  const handleTrashMouseLeave = (id) => {
-    setHoveredTrash((prev) => ({
-      ...prev,
-      [id]: false,
-    }));
-  };
-
-  const handlePencilMouseEnter = (id) => {
-    setHoveredPencil((prev) => ({
-      ...prev,
-      [id]: true,
-    }));
-  };
-
-  const handlePencilMouseLeave = (id) => {
-    setHoveredPencil((prev) => ({
-      ...prev,
-      [id]: false,
-    }));
-  };
-
-  useEffect(() => {
-    fetchTasks();
-  }, []);
-
-  const fetchTasks = async () => {
-    try {
- 
-      const response = await axios.get(`${apiBaseUrl}/api/tasks`);
-      setTasks(response.data);
-    } catch (error) {
-      console.error('Error fetching tasks', error);
-    }
-  };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setTaskData({
@@ -100,14 +55,13 @@ const User = () => {
     try {
       const response = await axios.post(`${apiBaseUrl}/api/tasks`, taskData);
       console.log('Task created:', response.data);
-      setTasks([...tasks, response.data.task]);
+      // Clear form fields after submission
       setTaskData({ title: '', description: '', dueDate: '', completed: false });
     } catch (error) {
       console.error('Error creating task', error);
     }
   };
   
-
   return (
     <div className='form--task'>
       <form className='form' onSubmit={handleSubmit}>
@@ -145,7 +99,9 @@ const User = () => {
         </label>
         <button type="submit">Submit</button>
       </form>
-      <div className='task--outer'>
+
+      {/* Commented out the task listing section */}
+      {/* <div className='task--outer'>
         <table className='task-table'>
           <thead>
             <tr>
@@ -181,7 +137,7 @@ const User = () => {
             ))}
           </tbody>
         </table>
-      </div>
+      </div> */}
     </div>
   );
 };
