@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { TbTrashFilled } from "react-icons/tb";
 import styled from "styled-components";
@@ -21,6 +21,9 @@ const StyledPencilIcon = styled(PiPencilSimpleLineFill)`
 const User = () => {
   const [clickedTrash, setClickedTrash] = useState({});
   const [clickedPencil, setClickedPencil] = useState({});
+  const [hoveredTrash, setHoveredTrash] = useState({});
+  const [hoveredPencil, setHoveredPencil] = useState({});
+
   const [taskData, setTaskData] = useState({
     title: '',
     description: '',
@@ -61,7 +64,24 @@ const User = () => {
       console.error('Error creating task', error);
     }
   };
-  
+
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const response = await axios.get(`${apiBaseUrl}/api/tasks`);
+        setTasks(response.data.tasks);
+      }
+      catch (error) {
+        console.error("Error fetching data", error);
+      }
+    };
+    fetchTasks();
+  }, [])
+
+
+
   return (
     <div className='form--task'>
       <form className='form' onSubmit={handleSubmit}>
@@ -101,7 +121,7 @@ const User = () => {
       </form>
 
       {/* Commented out the task listing section */}
-      {/* <div className='task--outer'>
+      <div className='task--outer'>
         <table className='task-table'>
           <thead>
             <tr>
@@ -137,7 +157,7 @@ const User = () => {
             ))}
           </tbody>
         </table>
-      </div> */}
+      </div>
     </div>
   );
 };
