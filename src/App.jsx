@@ -1,13 +1,15 @@
 import React from 'react';
-import User from "./components/User/index";
-import Task from "./components/Task/index";
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/LandingPage';
+import Workspace from './pages/Workspace'; 
 const App = () => {
   return (
-    <div>
-      {/* <User /> */}
-      <Task />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/workspace" element={<Workspace />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
